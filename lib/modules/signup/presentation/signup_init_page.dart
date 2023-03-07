@@ -86,7 +86,7 @@ class SignUpInit extends StatelessWidget {
 
   void handelSignUp(BuildContext context) {
     print('Fazer sign up normal');
-    Navigator.pushNamed(context, '/choose_language');
+    Navigator.pushNamed(context, '/create_account');
   }
 
   void handelSocial() {
@@ -144,26 +144,4 @@ class SignUpInit extends StatelessWidget {
       ],
     );
   }
-}
-
-Widget _buildSocialContent(
-    {required String socialName, required String logoPath}) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Image.asset(
-        logoPath,
-        width: 30,
-        height: 30,
-      ),
-      const SizedBox(
-        width: 10,
-      ),
-      Text(
-        'Continue with $socialName',
-        style:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      )
-    ],
-  );
 }
