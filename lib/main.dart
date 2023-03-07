@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/create_account.dart';
-
+import'modules/signup/presentation/pages/choose_language_page.dart';
 import'modules/signup/presentation/signup_init_page.dart';
 
 void main() {
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const SignUpInit(),
        routes: {
-        '/create_account':(context) => const CreateAccountPage()
+        '/create_account':(context) => const CreateAccountPage(),
+        '/choose_language': (context) => const ChooseLanguagePage(), 
       }, 
       
     );

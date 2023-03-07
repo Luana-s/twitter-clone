@@ -21,6 +21,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           TwitterTextField(hint: 'Name',),
           TwitterTextField(hint: 'Phone number or email address',),
           TwitterTextField(hint:'Date of birth' ,),
+          
         ],
       ),
     )));
