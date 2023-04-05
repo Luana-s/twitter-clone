@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'modules/signup/presentation/pages/create_account/create_account_page.dart';
+import'modules/signup/presentation/pages/choose_language/choose_language_page.dart';
 
-import 'package:twitter_clone/modules/signup/presentation/pages/create_account_page.dart';
-import'modules/signup/presentation/pages/choose_language_page.dart';
 import'modules/signup/presentation/signup_init_page.dart';
 
+import 'shared/ui/widgets/text_field/text_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpInit(),
+      home: const CreateAccountPage(),
        routes: {
         '/create_account':(context) => const CreateAccountPage(),
         '/choose_language': (context) => const ChooseLanguagePage(), 
