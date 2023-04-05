@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/modules/signup/presentation/pages/friend_suggestions/friend_suggestions_page.dart';
 import 'modules/signup/presentation/pages/create_account/create_account_page.dart';
 import'modules/signup/presentation/pages/choose_language/choose_language_page.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CreateAccountPage(),
+      home: const FriendSuggestionsPage(),
        routes: {
         '/create_account':(context) => const CreateAccountPage(),
         '/choose_language': (context) => const ChooseLanguagePage(), 

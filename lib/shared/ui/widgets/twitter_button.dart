@@ -5,11 +5,25 @@ class TwitterButton extends StatelessWidget {
    double elevation=2;
    final Color backColor;
    BorderSide side=BorderSide.none;
-  void Function()? callback; 
+  void Function()? onPressed; 
+  final double? width;
+  final double? height;
   
-  TwitterButton({super.key, required this.child, this.callback,this.elevation=2,this.backColor=Colors.blue});
+  TwitterButton({super.key,
+   required this.child,
+    this.onPressed,
+    this.elevation=2,
+    this.width,
+    this.height,
+    this.backColor=Colors.blue});
 
-  TwitterButton.social({super.key, required this.child, this.callback,this.elevation=0,this.backColor=Colors.white})
+  TwitterButton.social({super.key,
+   required this.child,
+    this.onPressed,
+    this.elevation=0,
+    this.width,
+    this.height,
+    this.backColor=Colors.white})
   {
 
     side=BorderSide(color: Colors.grey[350]!);
@@ -32,9 +46,10 @@ class TwitterButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(60)
           )
         ),
-        onPressed: callback,
+        onPressed: onPressed,
         child: child,
       ),
     );
   }
+
 }

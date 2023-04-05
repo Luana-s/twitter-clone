@@ -45,7 +45,7 @@ class SignUpInit extends StatelessWidget {
         TwitterButton.social(
           child: _buildSocialContent(
               logoPath: 'assets/images/google.png', socialName: 'Google'),
-          callback: handelSocial,
+          onPressed: handelSocial,
         ),
         const SizedBox(
           height: 20,
@@ -75,7 +75,7 @@ class SignUpInit extends StatelessWidget {
             ]),
 
         TwitterButton(
-          callback: () {
+          onPressed: () {
             handelSignUp(context);
           },
           child: const Text('Create Account'),
