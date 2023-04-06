@@ -21,10 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FriendSuggestionsPage(),
+      home: const SignUpInit(),
        routes: {
-        '/create_account':(context) => const CreateAccountPage(),
         '/choose_language': (context) => const ChooseLanguagePage(), 
+        '/create_account': (context) => const CreateAccountPage(),
+        '/friend_suggestions': (context) => const FriendSuggestionsPage()
       }, 
       
     );

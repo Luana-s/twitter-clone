@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/choose_language/choose_language_page_controller.dart';
-
-import 'package:twitter_clone/shared/ui/widgets/bird_icon_widget.dart';
-import 'package:twitter_clone/modules/signup/presentation/pages/create_account/create_account_page.dart';
-
+import '../../../../../shared/ui/widgets/twitter_button.dart';
 import '../../widgets/custom_ckeckbox/custom_checkbox.dart';
 import '../../widgets/twitter_appbar.dart';
-
+import'package:twitter_clone/modules/signup/presentation/pages/create_account/create_account_page.dart';
 
 class ChooseLanguagePage extends StatefulWidget {
   const ChooseLanguagePage({super.key});
@@ -31,6 +28,12 @@ class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
             children: [
               _buildSearchField(),
               _buildLanguageList(),
+              TwitterButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/create_account');
+                  }, 
+                  child: const Text('Create Account')
+                )
             ],
           ),
         )
@@ -39,10 +42,6 @@ class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
   }
 
   Widget _buildSearchField() {
-    
-   
-
-
     return Observer(
       builder: (context) {
         return TextField(

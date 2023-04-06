@@ -15,6 +15,13 @@ mixin _$TwitterTextFieldController on _TwitterTextFieldControllerBase, Store {
   bool get isValid => (_$isValidComputed ??= Computed<bool>(() => super.isValid,
           name: '_TwitterTextFieldControllerBase.isValid'))
       .value;
+  Computed<String?>? _$getErrorMessageComputed;
+
+  @override
+  String? get getErrorMessage => (_$getErrorMessageComputed ??=
+          Computed<String?>(() => super.getErrorMessage,
+              name: '_TwitterTextFieldControllerBase.getErrorMessage'))
+      .value;
 
   late final _$validateAtom =
       Atom(name: '_TwitterTextFieldControllerBase.validate', context: context);
@@ -68,7 +75,8 @@ mixin _$TwitterTextFieldController on _TwitterTextFieldControllerBase, Store {
     return '''
 validate: ${validate},
 input: ${input},
-isValid: ${isValid}
+isValid: ${isValid},
+getErrorMessage: ${getErrorMessage}
     ''';
   }
 }

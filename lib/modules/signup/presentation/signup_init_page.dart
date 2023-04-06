@@ -86,7 +86,7 @@ class SignUpInit extends StatelessWidget {
 
   void handelSignUp(BuildContext context) {
     print('Fazer sign up normal');
-    Navigator.pushNamed(context, '/create_account');
+    Navigator.pushNamed(context, '/choose_language');
   }
 
   void handelSocial() {

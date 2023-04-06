@@ -49,7 +49,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               ),
 
 
-              const SizedBox(height: 20),
+            const SizedBox(height: 20),
               Observer(
                 builder: (context) {
                   return Align(
@@ -74,5 +74,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
   void confirm() {
     print('Continuando para próxima tela!');
+    Navigator.pushNamed(context, '/friend_suggestions');
   }
 }
