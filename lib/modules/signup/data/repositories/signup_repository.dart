@@ -1,4 +1,4 @@
-import 'friend.dart';
+import '../../domain/friend.dart';
 
 abstract class SignUpRepository {
   Future<List<Friend>> loadSuggestionsFriends();
@@ -6,5 +6,5 @@ abstract class SignUpRepository {
 
 
 abstract class FriendRepository {
-  //load friend suggestion
+  
 }
