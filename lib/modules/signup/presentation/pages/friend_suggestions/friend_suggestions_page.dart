@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/friend_suggestions/widgets/friends_to_follow/friend_card_widget.dart';
 import 'package:twitter_clone/shared/ui/title_widget.dart';
 import '../../../../../shared/ui/subtitle_wigget.dart';
-import '../../../data/dasources/load_friends_suggestions_datasource.dart';
-import '../../../data/dasources/load_friends_suggestions_datasource_impl.dart';
-import '../../../data/dasources/sign_up_repository.dart';
-import '../../../data/dasources/signup_google_datasource.dart';
-import '../../../data/dasources/signup_rest_datasource.dart';
-import '../../../data/dasources/signup_web_datasource.dart';
+import '../../../data/load_friends_suggestions_datasource.dart';
+import '../../../data/load_friends_suggestions_datasource_impl.dart';
+import '../../../data/sign_up_repository.dart';
 import '../../../domain/friend.dart';
-import '../../../data/repositories/signup_repository.dart';
+import '../../../domain/signup_repository.dart';
 import '../../widgets/twitter_appbar.dart';
+//import'package:twitter_clone/modules/signup/presentation/pages/friend_suggestions/friend_suggestions_page.dart';
+
 import 'friend_suggestions_page_contoller.dart';
-
-
 class FriendSuggestionsPage extends StatefulWidget {
   const FriendSuggestionsPage({super.key});
 
@@ -26,10 +23,8 @@ class _FriendSuggestionsPageState extends State<FriendSuggestionsPage> {
   
   @override
   void initState() {
-    SignUpGoogleDatasource googleDatasource = SignUpGoogleDatasource();
-    SignUpWebDatasource signUpWebDatasource = SignUpRestDatasource();
     LoadFriendSuggestionsDatasource datasource = LoadFriendSuggestionsDatasourceImpl();
-    SignUpRepository repository = SignUpRepositoryImpl(datasource: datasource, webDatasource);
+    SignUpRepository repository = SignUpRepositoryImpl(datasource: datasource);
     controller = FriendsSuggestionsPageController(repository: repository);
 
     super.initState();

@@ -1,4 +1,4 @@
-import '../../domain/friend.dart';
+import '../domain/friend.dart';
 import 'load_friends_suggestions_datasource.dart';
 
 class LoadFriendSuggestionsDatasourceImpl implements LoadFriendSuggestionsDatasource {

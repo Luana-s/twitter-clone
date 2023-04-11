@@ -34,7 +34,6 @@ dependencies:
     sdk: flutter
   mobx: ^2.1.4
   flutter_mobx: ^2.0.6+5
-  dio: ^5.1.1
 
  
 
