@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:twitter_clone/modules/signup/data/dasources/signup_web_datasource.dart';
-import 'package:twitter_clone/modules/signup/domain/credentials.dart';
+
+
 import 'package:twitter_clone/modules/signup/presentation/helpers/validators.dart';
 import 'package:twitter_clone/modules/signup/presentation/widgets/twitter_appbar.dart';
 import 'package:twitter_clone/shared/ui/widgets/text_field/text_field.dart';
 
 import '../../../../../shared/ui/widgets/text_field/twitter_text_field_controller.dart';
 import '../../../../../shared/ui/widgets/twitter_button.dart';
-import '../../../data/dasources/sign_up_repository.dart';
-import '../../../data/dasources/signup_google_datasource.dart';
-import '../../../data/dasources/signup_rest_datasource.dart';
-import '../../../data/repositories/signup_repository.dart';
+
 
 
 class CreateAccountPage extends StatefulWidget {
@@ -79,17 +76,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   }
 
   void confirm() {
-    SignUpGoogleDatasource googleDatasource = SignUpGoogleDatasource();
-    SignUpWebDatasource signUpWebDatasource = SignUpRestDatasource();
-
-    Credentials credential = Credentials(
-      name: nameController.input,
-      password: emailController.input,
-      username: "",
-      password: "",
-    );
-
-     SignUpRepository repository = SignUpRepositoryImpl(socialDatasource: googleDatasource, webDatasource: signUpWebDatasource);
+    
     Navigator.pushNamed(context, '/friend_suggestions');
   }
 }
