@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/modules/signup/data/datasources/signup_rest_datasource.dart';
+import 'package:twitter_clone/modules/signup/data/datasources/signup_web_datasource.dart';
 import 'package:twitter_clone/modules/signup/domain/signup_repository.dart';
 import '../../../../../shared/ui/subtitle_wigget.dart';
 import '../../../../../shared/ui/title_widget.dart';
-import '../../../data/load_friends_suggestions_datasource.dart';
-import '../../../data/load_friends_suggestions_datasource_impl.dart';
-import '../../../data/sign_up_repository.dart';
+import '../../../data/datasources/load_friends_suggestions_datasource.dart';
+import '../../../data/datasources/load_friends_suggestions_datasource_impl.dart';
+import '../../../data/datasources/signup_google_datasource.dart';
+import '../../../data/repositories/friends_repository.dart';
+import '../../../data/repositories/signup_repository.dart';
 import '../../../domain/friend.dart';
 import '../../widgets/twitter_appbar.dart';
 import 'friend_suggestions_page_controller.dart';
@@ -24,8 +28,11 @@ class _FriendSuggestionsPageState extends State<FriendSuggestionsPage> {
   
   @override
   void initState() {
+    SignUpGoogleDatasource googleDatasource=SignUpGoogleDatasource();
+    SignUpWebDatasource signUpWebDatasource= SignUpRestDatasource();
+
     LoadFriendSuggestionsDatasource datasource = LoadFriendSuggestionsDatasourceImpl();
-    SignUpRepository repository = SignUpRepositoryImpl(datasource: datasource);
+    SignUpRepository repository = SignUpRepositoryImpl(socialDatasource: googleDatasource, webDatasource: signUpWebDatasource);
     controller = FriendSuggestionsPageController(repository: repository);
 
     super.initState();
