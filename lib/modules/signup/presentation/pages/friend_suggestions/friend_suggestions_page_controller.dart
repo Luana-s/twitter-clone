@@ -1,24 +1,33 @@
 import 'package:mobx/mobx.dart';
+import 'package:twitter_clone/modules/signup/domain/entities/friend.dart';
 
-import '../../../domain/friend.dart';
-import '../../../domain/signup_repository.dart';
+import '../../../data/datasources/load_friends_suggestions_datasource_impl.dart';
+import '../../../data/repositories/friends_repository.dart';
+import '../../../domain/repositories/friends_repository.dart';
 part 'friend_suggestions_page_controller.g.dart';
 
 class FriendSuggestionsPageController = _FriendSuggestionsPageControllerBase with _$FriendSuggestionsPageController;
 
 abstract class _FriendSuggestionsPageControllerBase with Store {
-  SignUpRepository repository;
-
-  _FriendSuggestionsPageControllerBase({required this.repository});
-
   
 
-  @action
-  Future<List<Friend>> loadFriendSuggestions() async {
-   
-    await Future.delayed(const Duration(seconds: 5));
+  _FriendSuggestionsPageControllerBase();
 
-    //return await repository.loadSuggestionsFriends();
-    return await [];
+  @observable
+  ObservableFuture<List<Friend>>? observableLoadFriends;
+  
+  @observable
+  List<Friend>? friends;
+
+  @action
+  Future<void> loadFriendSuggestions() async {
+    LoadFriendSuggestionsDatasourceImpl datasource = LoadFriendSuggestionsDatasourceImpl();
+    FriendRepository repository = FriendsRepositoryImpl(datasource: datasource);
+
+    observableLoadFriends = ObservableFuture(
+      repository.loadSuggestionsFriends()
+    );
+
+    friends = await observableLoadFriends!;
   }
 }

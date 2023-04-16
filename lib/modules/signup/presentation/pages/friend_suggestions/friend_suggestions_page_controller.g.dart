@@ -10,12 +10,46 @@ part of 'friend_suggestions_page_controller.dart';
 
 mixin _$FriendSuggestionsPageController
     on _FriendSuggestionsPageControllerBase, Store {
+  late final _$observableLoadFriendsAtom = Atom(
+      name: '_FriendSuggestionsPageControllerBase.observableLoadFriends',
+      context: context);
+
+  @override
+  ObservableFuture<List<Friend>>? get observableLoadFriends {
+    _$observableLoadFriendsAtom.reportRead();
+    return super.observableLoadFriends;
+  }
+
+  @override
+  set observableLoadFriends(ObservableFuture<List<Friend>>? value) {
+    _$observableLoadFriendsAtom.reportWrite(value, super.observableLoadFriends,
+        () {
+      super.observableLoadFriends = value;
+    });
+  }
+
+  late final _$friendsAtom = Atom(
+      name: '_FriendSuggestionsPageControllerBase.friends', context: context);
+
+  @override
+  List<Friend>? get friends {
+    _$friendsAtom.reportRead();
+    return super.friends;
+  }
+
+  @override
+  set friends(List<Friend>? value) {
+    _$friendsAtom.reportWrite(value, super.friends, () {
+      super.friends = value;
+    });
+  }
+
   late final _$loadFriendSuggestionsAsyncAction = AsyncAction(
       '_FriendSuggestionsPageControllerBase.loadFriendSuggestions',
       context: context);
 
   @override
-  Future<List<Friend>> loadFriendSuggestions() {
+  Future<void> loadFriendSuggestions() {
     return _$loadFriendSuggestionsAsyncAction
         .run(() => super.loadFriendSuggestions());
   }
@@ -23,6 +57,8 @@ mixin _$FriendSuggestionsPageController
   @override
   String toString() {
     return '''
+observableLoadFriends: ${observableLoadFriends},
+friends: ${friends}
     ''';
   }
 }

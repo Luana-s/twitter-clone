@@ -3,7 +3,7 @@ class User {
   final String name;
   final String email;
   final String password;
-  final String code;
+  final int code;
 
   User({
     required this.id,
