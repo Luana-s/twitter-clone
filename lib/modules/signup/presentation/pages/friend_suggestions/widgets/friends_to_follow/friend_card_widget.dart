@@ -29,12 +29,14 @@ class FriendCard extends StatelessWidget {
   Widget _buildFriendAvatar() {
     return CircleAvatar(
       backgroundImage: NetworkImage(friend.imageURL),
+      backgroundColor: Colors.white,
       radius: 30,
     );
   }
 
   Widget _buildFriendContent() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildFriendTopContent(),
         _buildFriendMessage(),
@@ -47,6 +49,7 @@ class FriendCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FriendName(name: friend.firstName),
             FriendUsernameWidget(username: friend.username)
