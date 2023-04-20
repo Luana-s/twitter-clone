@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/themes_list/widgets/theme_container.dart';
+import 'package:twitter_clone/shared/ui/widgets/twitter_button.dart';
 
 import '../../../../../shared/ui/subtitle_wigget.dart';
 import '../../../../../shared/ui/title_widget.dart';
@@ -64,6 +66,18 @@ class _ThemeListPageState extends State<ThemeListPage> {
                 padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: SubtitleWidget(title: 'Você pode escolher os temas para que o twitter selecione as melhores postagens para você!'),
               ),
+              Align(
+                alignment:Alignment.centerRight ,
+                child: TwitterButton(
+                  child: const Text ('Finish'),
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  onPressed: (){
+                    Modular.to.pushNamed('/feed');
+                  },),
+
+              ),
+               SizedBox(height: 20.0,),
               ...themeRows,
             ],
           ),
