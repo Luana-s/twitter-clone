@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:twitter_clone/modules/signup/presentation/helpers/validators.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/create_account/create_account_page_controller.dart';
 import 'package:twitter_clone/modules/signup/presentation/widgets/twitter_appbar.dart';
@@ -84,7 +85,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       email: emailController.input
     );
 
-    Navigator.pushNamed(context, '/friend_suggestions', arguments: user);
+    Modular.to.pushNamed( '/friend_suggestions', arguments: user);
   }
 
 }
