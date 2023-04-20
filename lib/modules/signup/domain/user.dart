@@ -1,25 +1,22 @@
 class User {
-  final String id;
-  final String name;
-  final String email;
-  final String password;
-  final int code;
+  final int id;
+  final String firstName;
+  final String lastName;
+  final int age;
 
   User({
     required this.id,
-    required this.name, 
-    required this.email, 
-    required this.password,
-    required this.code
+    required this.firstName, 
+    required this.lastName, 
+    required this.age
   });
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       id: map['id'],
-      name: map['name'],
-      email: map['email'],
-      password: map['password'],
-      code: map['code'],
+      firstName: map['firstName'],
+      lastName: map['lastName'],
+      age: map['age'],
     );
   }
 

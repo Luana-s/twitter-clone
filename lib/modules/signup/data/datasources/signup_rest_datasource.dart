@@ -4,15 +4,18 @@ import 'package:twitter_clone/modules/signup/domain/entities/credentials.dart';
 import 'package:twitter_clone/modules/signup/domain/user.dart';
 
 class SignUpRestDatasource implements SignUpWebDatasource{
-  SignUpRestDatasource();
+  SignUpRestDatasource({required this.dio});
 
- // Dio dio;
+  Dio dio;
 
   @override
   Future<User> signInWithWeb({required Credentials credentials})async {
-     Dio dio = Dio();
 
-    var response = await dio.post('http://10.0.2.2:3000/signup', data: credentials.toMap());
+    var response = await dio.post('/users/add', data: credentials.toMap());
+
+     print('RESPOSTA DO DUMMY JSON ');
+    print(response.data);
+
 
     User user = User.fromMap(response.data);
     return user;

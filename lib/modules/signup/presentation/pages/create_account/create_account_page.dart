@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 import 'package:twitter_clone/modules/signup/presentation/helpers/validators.dart';
 import 'package:twitter_clone/modules/signup/presentation/pages/create_account/create_account_page_controller.dart';
 import 'package:twitter_clone/modules/signup/presentation/widgets/twitter_appbar.dart';
 import 'package:twitter_clone/shared/ui/widgets/text_field/text_field.dart';
 import '../../../../../shared/ui/widgets/text_field/twitter_text_field_controller.dart';
 import '../../../../../shared/ui/widgets/twitter_button.dart';
-import '../../../domain/user.dart';
 
 
 
@@ -21,7 +21,15 @@ class CreateAccountPage extends StatefulWidget {
 class _CreateAccountPageState extends State<CreateAccountPage> {
   TwitterTextFieldController nameController = TwitterTextFieldController();
   TwitterTextFieldController emailController = TwitterTextFieldController();
-  CreateAccountPageController controller = CreateAccountPageController();
+  late CreateAccountPageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = Modular.get<CreateAccountPageController>();
+  }
+
 
 
   @override
@@ -57,6 +65,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             const SizedBox(height: 20),
               Observer(
                 builder: (context) {
+                  if (controller.createAccountObservableFuture != null && controller.createAccountObservableFuture!.status==FutureStatus.pending){
+                    return const CircularProgressIndicator.adaptive();
+                  }
+                  
+  
                   return Align(
                     alignment: Alignment.centerRight,
                     child: TwitterButton(
@@ -78,14 +91,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   }
 
    Future<void> confirm() async {
-    User user = await controller.confirmWithCredentials(
+     controller.confirmWithCredentials(
       username: "",
       password: "123123",
       name: nameController.input,
       email: emailController.input
     );
 
-    Modular.to.pushNamed( '/friend_suggestions', arguments: user);
   }
 
 }

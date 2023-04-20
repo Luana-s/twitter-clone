@@ -6,7 +6,7 @@ class NetworkModule extends Module {
   List<Bind> get binds => [
     Bind.singleton((i) => Dio(
       BaseOptions(
-        baseUrl: 'https://dummyjson.com/'
+        baseUrl: 'https://dummyjson.com'
       )
     ), export: true),
   ];

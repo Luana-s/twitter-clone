@@ -7,6 +7,7 @@ import '../../../../../shared/ui/subtitle_wigget.dart';
 import '../../../../../shared/ui/title_widget.dart';
 import '../../../../../shared/ui/widgets/twitter_button.dart';
 import '../../../domain/entities/friend.dart';
+import '../../../domain/user.dart';
 import '../../widgets/twitter_appbar.dart';
 import 'friend_suggestions_page_controller.dart';
 
@@ -15,7 +16,8 @@ import 'friend_suggestions_page_controller.dart';
 
 
 class FriendSuggestionsPage extends StatefulWidget {
-  const FriendSuggestionsPage({super.key});
+  final User user;
+  const FriendSuggestionsPage({super.key, required this.user});
 
   @override
   State<FriendSuggestionsPage> createState() => _FriendSuggestionsPageState();
@@ -29,6 +31,11 @@ class _FriendSuggestionsPageState extends State<FriendSuggestionsPage> {
     print('init state friend sugg....');
     controller = Modular.get<FriendSuggestionsPageController>();
     controller.loadFriendSuggestions();
+
+    
+    if (widget.user != null) {
+      print('USER CADASTRADO ${widget.user!.id}, ${widget.user!.firstName}, ${widget.user!.age}');
+    }
     super.initState();
   }
 
@@ -45,7 +52,7 @@ class _FriendSuggestionsPageState extends State<FriendSuggestionsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [  
                 TitleWidget(title: 'Sugestões de perfis para seguir'),
-                const SubtitleWidget(title: 'Ao seguir alguém você verá os twittes dessa pessoa em sua timeline na página inicial'),
+                SubtitleWidget(title: 'Ao seguir alguém você, verá, ${widget.user!.firstName} os twittes dessa pessoa em sua timeline na página inicial'),
                 const SizedBox(height: 10),
                 TitleWidget(title: 'Pessoas que talvez você conheça', size: 20),
                 Observer(
@@ -53,7 +60,10 @@ class _FriendSuggestionsPageState extends State<FriendSuggestionsPage> {
                     if (controller.observableLoadFriends != null && 
                         controller.observableLoadFriends!.status == FutureStatus.pending && 
                         controller.friends == null) {
-                      return const CircularProgressIndicator();
+                      return const Align(
+                        alignment: Alignment.centerRight,
+                        
+                        child: CircularProgressIndicator());
                     }
 
                     List<Friend> friendsSuggestions = controller.friends!;

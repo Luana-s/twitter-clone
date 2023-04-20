@@ -1,16 +1,16 @@
 class Credentials {
-  final String name;
-  final String username;
+  final String firstName;
+  final String lastName;
   final String email;
-  final String password;
+  final int age;
 
-  Credentials({required this.name, required this.username,required  this.email,required this.password});
+  Credentials({required this.firstName, required this.lastName,required  this.email, this.age=25});
   
   Map<String, dynamic> toMap() {
     return {
-      "username": username,
-      "name": name,
-      "password": password,
+      "firstName": firstName,
+      "lastName": lastName,
+      "age": age,
       "email": email
     };
   }
